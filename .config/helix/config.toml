@@ -1,0 +1,49 @@
+theme = "onedark"
+[editor]
+bufferline = "multiple"
+color-modes = true
+cursorline = true
+middle-click-paste = false
+true-color = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = true
+
+[editor.indent-guides]
+character = "╎"
+render = true
+skip-levels = 0
+
+[editor.lsp]
+display-inlay-hints = true
+display-messages = true
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25
+wrap-indicator = "↪"
+
+[editor.statusline]
+center = ["diagnostics", "workspace-diagnostics"]
+left = ["mode", "spacer", "spinner", "spacer", "version-control", "spacer", "file-name", "file-modification-indicator"]
+right = ["selections", "primary-selection-length", "position", "position-percentage", "file-encoding", "file-line-ending", "file-type"]
+separator = "|"
+
+[editor.statusline.mode]
+insert = "INS"
+normal = "NOR"
+select = "SEL"
+
+[editor.whitespace]
+render = "all"
+[editor.whitespace.characters]
+nbsp = "⍽"
+newline = "⏎"
+space = " "
+tab = "→"
+tabpad = " "
