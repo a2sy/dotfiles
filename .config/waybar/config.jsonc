@@ -1,0 +1,99 @@
+// see https://github.com/Alexays/Waybar/wiki/
+
+{
+	"layer": "up",
+    "position": "bottom",
+	"modules-left": ["sway/workspaces", "sway/mode","clock"],
+	"modules-center": [],
+	"modules-right": ["tray", "bluetooth","network", "pulseaudio", "battery" ,"custom/notification"],
+
+    "sway/window": {
+        "format": "{title}",
+        "max-length": 50
+    },
+
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        },
+    "format": "{icon}",
+    "format-icons": {
+        // "1": "",
+        // "2": "",
+        // "3": "",
+        // "4": "",
+        // "5": "",
+        // "urgent": "",
+        "focused": "󰮯",
+        "default": "󰊠"
+    }
+},
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+          "notification": "<span foreground='red'><sup></sup></span>",
+          "none": " ",
+          "dnd-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-none": "",
+          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "inhibited-none": "",
+          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+      },
+	"battery": {
+        "states": {
+            "warning": 20
+        },
+        "format": "{icon} {capacity}% ",
+        "format-charging": "{icon} {capacity}%",
+        "format-plugged": "{icon} {capacity}%",
+        "format-icons": ["  ", "  ", "  ", "  ", "  " ]
+    },
+
+    "clock": {
+        "tooltip": true,
+        "tooltip-format":"{:%A, %e %b %Y}",
+        "format": "{:%H:%M}"
+    },
+
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-icons": {
+			"default": ["奄", "奔", "墳"]
+		},
+        "on-click": "pavucontrol"
+	},
+
+	"network": {
+		"tooltip": true,
+		"format-wifi": " ",
+        "format-disconnected": " Disconnected",
+		"format-ethernet": " {ipaddr}",
+        "tooltip-format": "{essid} ({signalStrength}%) {ifname}: {ipaddr}/{cidr}"
+	},
+
+    "bluetooth": {
+	    "format": " {status}",
+	    "format-disabled": "", // an empty format will hide the module
+	    "format-connected": " {num_connections} connected",
+	    "tooltip-format": "{controller_alias}\t{controller_address}",
+	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    }
+}
